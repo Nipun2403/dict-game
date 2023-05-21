@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import axios from "axios";
 import Input from "./components/Input";
+import Info from "./Info";
 
 function App() {
   // Defining States
@@ -38,7 +39,7 @@ function App() {
   const getTensor = () => {
     axios
       .get(
-        `https://tenor.googleapis.com/v2/search?q=${tag}&key=AIzaSyA2MilSxLDgJ5Jy9VnTRSAxCqAT9OUcaWo&client_key=my_test_app&limit=2&country=IN&media_filter=gif`
+        `https://tenor.googleapis.com/v2/search?q=${tag}&key=AIzaSyA2MilSxLDgJ5Jy9VnTRSAxCqAT9OUcaWo&client_key=my_test_app&limit=2&country=IN&media_filter=gif&random=${"false"}`
       )
       .then((response) => {
         setTensor(response.data.results[0].media_formats.gif.url);
@@ -63,27 +64,27 @@ function App() {
   };
 
   return (
-    <div className="">
-      <Input
-        tag={tag}
-        setTag={setTag}
-        getGif={getGif}
-        word={getWordInfo}
-        tensor={getTensor}
-      />
+    <div>
+      <div className="">
+        <Input
+          tag={tag}
+          setTag={setTag}
+          getGif={getGif}
+          word={getWordInfo}
+          tensor={getTensor}
+        />
+      </div>
 
-      <div className="flex flex-col gap-8">
-        <h2>Word : {wordInfo.title}</h2>
-        {/* <p>{wordInfo.etymology}</p> */}
-        <p>Defination : {wordInfo.def}</p>
-      </div>
-      <div className="flex gap-16 my-8">
-        <h1>Using Giphy : </h1>
-        <img src={gifUrl} />
-      </div>
-      <div className="flex gap-16">
-        <h1>Using Tensor : </h1>
-        <img src={tensor} />
+      <div>
+        <Info word={wordInfo} />
+        <div className="flex gap-16 my-8">
+          <h1>Using Giphy : </h1>
+          <img src={gifUrl} />
+        </div>
+        <div className="flex gap-16">
+          <h1>Using Tensor : </h1>
+          <img src={tensor} />
+        </div>
       </div>
     </div>
   );
