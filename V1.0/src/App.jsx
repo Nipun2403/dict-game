@@ -11,7 +11,7 @@ function App() {
   const [tag, setTag] = useState("");
   const [wordInfo, setWordInfo] = useState({
     title: "",
-    def: "",
+    def: [],
     etymology: "",
   });
 
@@ -23,14 +23,15 @@ function App() {
       )
       .then((response) => {
         // const et = response.data[0].et[0][1].replaceAll("{it}", "");
+        const def = response.data[0].shortdef;
 
         setWordInfo({
           title: tag,
-          def: response.data[0].shortdef[0],
+          def: def,
           // etymology: et.replaceAll("{/it}", ""),
         });
         // for debug use
-        console.log(response);
+        // console.log(response);
         // console.log(et);n
       });
   };
@@ -82,7 +83,7 @@ function App() {
           <img src={gifUrl} />
         </div>
         <div className="flex gap-16">
-          <h1>Using Tensor : </h1>
+          <h1>Using Tenor : </h1>
           <img src={tensor} />
         </div>
       </div>

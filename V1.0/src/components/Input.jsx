@@ -32,7 +32,7 @@ function Input({ tag, setTag, getGif, word, tensor }) {
           className={`${gap}`}
           onClick={tensor}
         >
-          Tensor
+          Tenor
         </button>
         <button
           className={`bg-gray-400 text-black ${gap}`}
