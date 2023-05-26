@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import Input from "./components/Input";
 import Info from "./Info";
+// import Related from "./cluster/RelatedWords/RelatedMain";
 
 function App() {
   // Defining States
@@ -18,21 +19,14 @@ function App() {
   // Function to fetch info regarding the word from API
   const getWordInfo = () => {
     axios
-      .get(
-        `https://dictionaryapi.com/api/v3/references/collegiate/json/${tag}?key=7ec72d1b-15eb-49f8-a1ab-f2e9dae866db`
-      )
-      .then((response) => {
-        // const et = response.data[0].et[0][1].replaceAll("{it}", "");
-        const def = response.data[0].shortdef;
-
+      .get(`https://api.datamuse.com/words?sp=${tag}&md=d`)
+      .then((responce) => {
+        // console.log(responce.data[0].defs[0][0]);
         setWordInfo({
-          title: tag,
-          def: def,
+          title: responce.data[0].word,
+          def: responce.data[0].defs,
           // etymology: et.replaceAll("{/it}", ""),
         });
-        // for debug use
-        // console.log(response);
-        // console.log(et);n
       });
   };
 
@@ -77,6 +71,7 @@ function App() {
       </div>
 
       <div>
+        {/* <Related input={tag} /> */}
         <Info word={wordInfo} />
         <div className="flex gap-16 my-8">
           <h1>Using Giphy : </h1>

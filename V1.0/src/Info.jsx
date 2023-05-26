@@ -12,7 +12,7 @@ function Info({ word }) {
         <p>{word.title}</p>
       </div>
       {/* Other Info */}
-      <div className="flex gap-8 items-center text-3xl">
+      <div className="flex gap-8 items-start text-3xl">
         <p className={`px-4 underline underline-offset-4 text-3xl`}>
           Defination:
         </p>
