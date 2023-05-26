@@ -3,7 +3,6 @@ import "./App.css";
 import axios from "axios";
 import Input from "./components/Input";
 import Info from "./Info";
-// import Related from "./cluster/RelatedWords/RelatedMain";
 
 function App() {
   // Defining States
@@ -71,7 +70,6 @@ function App() {
       </div>
 
       <div>
-        {/* <Related input={tag} /> */}
         <Info word={wordInfo} />
         <div className="flex gap-16 my-8">
           <h1>Using Giphy : </h1>
@@ -86,4 +84,3 @@ function App() {
   );
 }
 export default App;
-
