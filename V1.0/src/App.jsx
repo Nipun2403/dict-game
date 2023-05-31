@@ -33,7 +33,7 @@ function App() {
   const getTensor = () => {
     axios
       .get(
-        `https://tenor.googleapis.com/v2/search?q=${tag}&key=AIzaSyA2MilSxLDgJ5Jy9VnTRSAxCqAT9OUcaWo&client_key=my_test_app&limit=2&country=IN&media_filter=gif&random=${"false"}`
+        `https://tenor.googleapis.com/v2/search?q=${tag}&key=AIzaSyA2MilSxLDgJ5Jy9VnTRSAxCqAT9OUcaWo&client_key=my_test_app&limit=2&country=IN&media_filter=gif&random=${"true"}`
       )
       .then((response) => {
         setTensor(response.data.results[0].media_formats.gif.url);
